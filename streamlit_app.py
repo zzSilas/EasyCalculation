@@ -92,7 +92,6 @@ def appliance_input_area(area_name, key_prefix):
             )
 
 
-
 with col_base:
     base_results = appliance_input_area("Base Appliance", "base")
 
