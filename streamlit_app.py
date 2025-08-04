@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(layout="wide")
-st.title("🧊 Refrigerator Base Appliance vs New Appliance Configuration")
+st.title("🧊 Refrigerator Calculation🧊 ")
 
 params = [
     "高压侧温度", "低压侧温度", "E_steady", "化霜增量", "Es"
