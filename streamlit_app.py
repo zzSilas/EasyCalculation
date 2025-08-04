@@ -3,47 +3,90 @@ import streamlit as st
 st.set_page_config(layout="wide")
 st.title("Refrigerator Base Appliance Configuration")
 
-# 使用列布局
-col1, col2 = st.columns([1, 2])
+st.header("📋 Base Appliance Inputs")
 
-with col1:
-    st.header("Base Appliance Inputs")
+# 使用三列来模拟“参数名 + 16°C + 32°C”的表格布局
+col_name, col_16, col_32 = st.columns([2, 1, 1])
 
-    compressor = st.selectbox("压缩机型号", ["型号A", "型号B", "型号C"])
-    KA = st.number_input("箱体 KA 值", min_value=0.0, step=0.1)
+# 表头
+with col_name:
+    st.markdown("**参数名称**")
+with col_16:
+    st.markdown("**16°C**")
+with col_32:
+    st.markdown("**32°C**")
 
-    st.subheader("高压侧温度")
-    high_temp_16 = st.number_input("16°C", key="high_16")
-    high_temp_32 = st.number_input("32°C", key="high_32")
+# 双温度参数
+with col_name:
+    st.write("高压侧温度")
+with col_16:
+    high_16 = st.number_input("", key="high_16")
+with col_32:
+    high_32 = st.number_input("", key="high_32")
 
-    st.subheader("低压侧温度")
-    low_temp_16 = st.number_input("16°C", key="low_16")
-    low_temp_32 = st.number_input("32°C", key="low_32")
+with col_name:
+    st.write("低压侧温度")
+with col_16:
+    low_16 = st.number_input("", key="low_16")
+with col_32:
+    low_32 = st.number_input("", key="low_32")
 
-    standby_power = st.number_input("待机功耗", min_value=0.0, step=0.1)
+with col_name:
+    st.write("E_steady")
+with col_16:
+    esteady_16 = st.number_input("", key="esteady_16")
+with col_32:
+    esteady_32 = st.number_input("", key="esteady_32")
 
-    st.subheader("E_steady")
-    E_steady_16 = st.number_input("16°C", key="esteady_16")
-    E_steady_32 = st.number_input("32°C", key="esteady_32")
+with col_name:
+    st.write("化霜增量")
+with col_16:
+    defrost_16 = st.number_input("", key="defrost_16")
+with col_32:
+    defrost_32 = st.number_input("", key="defrost_32")
 
-    st.subheader("化霜增量")
-    defrost_16 = st.number_input("16°C", key="defrost_16")
-    defrost_32 = st.number_input("32°C", key="defrost_32")
+with col_name:
+    st.write("Es")
+with col_16:
+    Es_16 = st.number_input("", key="es_16")
+with col_32:
+    Es_32 = st.number_input("", key="es_32")
 
-    E_aux = st.number_input("E_aux", min_value=0.0, step=0.1)
+# 单列参数
+col_name2, col_input = st.columns([2, 2])
 
-    st.subheader("Es")
-    Es_16 = st.number_input("16°C", key="es_16")
-    Es_32 = st.number_input("32°C", key="es_32")
+with col_name2:
+    st.write("待机功耗")
+with col_input:
+    standby_power = st.number_input("", key="standby_power")
 
-with col2:
-    st.header("输出结果区域（可扩展）")
-    st.write("你可以在这里显示计算结果、图表或者导出按钮等内容。")
+with col_name2:
+    st.write("E_aux")
+with col_input:
+    E_aux = st.number_input("", key="e_aux")
 
-    if st.button("打印所有输入值"):
-        st.write("压缩机型号:", compressor)
-        st.write("箱体 KA:", KA)
-        st.write("高压侧温度:", {"16°C": high_temp_16, "32°C": high_temp_32})
-        st.write("低压侧温度:", {"16°C": low_temp_16, "32°C": low_temp_32})
-        st.write("待机功耗:", standby_power)
-        st.write("Es:", {"16°C": Es_16, "32°C": Es_32})
+with col_name2:
+    st.write("箱体 KA")
+with col_input:
+    KA = st.number_input("", key="KA")
+
+with col_name2:
+    st.write("压缩机型号")
+with col_input:
+    compressor = st.selectbox("", ["型号A", "型号B", "型号C"], key="compressor")
+
+# 输出区
+st.divider()
+st.header("🧾 输入汇总")
+if st.button("打印所有输入值"):
+    st.write({
+        "压缩机型号": compressor,
+        "箱体 KA": KA,
+        "高压侧温度": {"16°C": high_16, "32°C": high_32},
+        "低压侧温度": {"16°C": low_16, "32°C": low_32},
+        "E_steady": {"16°C": esteady_16, "32°C": esteady_32},
+        "化霜增量": {"16°C": defrost_16, "32°C": defrost_32},
+        "Es": {"16°C": Es_16, "32°C": Es_32},
+        "待机功耗": standby_power,
+        "E_aux": E_aux
+    })
