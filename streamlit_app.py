@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(layout="wide")
-st.title("🧊 Refrigerator Calculation🧊 ")
+st.title("🧊 Refrigerator Calculation 🧊")
 
 params = [
     "高压侧温度", "低压侧温度", "E_steady", "化霜增量", "Es"
@@ -35,28 +35,46 @@ def appliance_input_area(area_name, key_prefix):
                 "", key=f"{key_prefix}_{param}_32", label_visibility="collapsed")
 
 
-    single_params = [
-        ("待机功耗", f"{key_prefix}_standby", "number"),
-        ("E_aux", f"{key_prefix}_e_aux", "number"),
-        ("箱体 KA", f"{key_prefix}_ka", "number"),
-        ("压缩机型号", f"{key_prefix}_compressor", "selectbox"),
-    ]
+    # 替代原来的 single_params，改成逐项输入
+    col1, col2 = st.columns([1.5, 1])
+    with col1:
+        st.markdown("待机功耗")
+    with col2:
+        results[f"{key_prefix}_standby"] = st.number_input("", key=f"{key_prefix}_standby", label_visibility="collapsed")
 
-    for label, key, typ in single_params:
-        col1, col2 = st.columns([1.5, 1])
-        with col1:
-            st.markdown(label)
-        with col2:
-            if typ == "number":
-                results[key] = st.number_input("", key=key, label_visibility="collapsed")
-            else:
-                results[key] = st.selectbox(
-                    "", 
-                    ["VESH11C", "VESH7C", "VESG9C", "VEMH8C", "VESH9G", "VESH6C", "VESF7C"],
-                    key=key,
-                    label_visibility="collapsed"
-                )
-    return results
+    col1, col2 = st.columns([1.5, 1])
+    with col1:
+        st.markdown("E_aux")
+    with col2:
+        results[f"{key_prefix}_e_aux"] = st.number_input("", key=f"{key_prefix}_e_aux", label_visibility="collapsed")
+
+    col1, col2 = st.columns([1.5, 1])
+    with col1:
+        st.markdown("压缩机型号")
+    with col2:
+        results[f"{key_prefix}_compressor"] = st.selectbox(
+            "", 
+            ["VESH11C", "VESH7C", "VESG9C", "VEMH8C", "VESH9G", "VESH6C", "VESF7C"],
+            key=f"{key_prefix}_compressor",
+            label_visibility="collapsed"
+        )
+
+    # 箱体 KA 和 特征温度输入（RC, VF, CC, FC）
+    st.markdown("**箱体 KA 与特征温度设置**")
+    room_labels = ["RC", "VF", "CC", "FC"]
+    col_name, *ka_cols = st.columns([1.5] + [1]*4)
+    with col_name:
+        st.markdown("KA 值")
+    for i, room in enumerate(room_labels):
+        with ka_cols[i]:
+            results[f"{key_prefix}_ka_{room}"] = st.number_input("", key=f"{key_prefix}_ka_{room}", label_visibility="collapsed")
+
+    col_name, *temp_cols = st.columns([1.5] + [1]*4)
+    with col_name:
+        st.markdown("特征温度 (°C)")
+    for i, room in enumerate(room_labels):
+        with temp_cols[i]:
+            results[f"{key_prefix}_temp_{room}"] = st.number_input("", key=f"{key_prefix}_temp_{room}", label_visibility="collapsed")
 
 
 with col_base:
