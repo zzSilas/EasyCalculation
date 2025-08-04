@@ -4,7 +4,7 @@ st.set_page_config(layout="wide")
 st.title("🧊 Refrigerator Calculation 🧊")
 
 params = [
-    "高压侧温度[℃]", "低压侧温度[℃]",  "E_steady[Wh/d]", "化霜增量[Wh/d]","Es[Wh/d]"
+    "高压侧温度[℃]", "低压侧温度[℃]",  "E_steady[Wh/d]", "Standby[Wh/d]","化霜增量[Wh/d]","Es[Wh/d]"
 ]
 
 # 三列布局：左栏、中间分割栏（窄），右栏
