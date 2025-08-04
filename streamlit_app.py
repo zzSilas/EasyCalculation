@@ -105,8 +105,5 @@ with col_new:
 
 st.divider()
 
-if st.button("打印所有输入"):
-    st.subheader("Base Appliance 输入")
-    st.write(base_results)
-    st.subheader("New Appliance 输入")
-    st.write(new_results)
+if st.button("Calculate"):
+    print("OK")
