@@ -62,19 +62,35 @@ def appliance_input_area(area_name, key_prefix):
     # 箱体 KA 和 特征温度输入（RC, VF, CC, FC）
     st.markdown("**箱体 KA 与特征温度设置**")
     room_labels = ["RC", "VF", "CC", "FC"]
+
+    # 第一行：标签
     col_name, *ka_cols = st.columns([1.5] + [1]*4)
+    with col_name:
+        st.markdown("**参数项**")
+    for i, room in enumerate(room_labels):
+        with ka_cols[i]:
+            st.markdown(f"**{room}**")
+
+    # 第二行：KA 值
+    col_name, *ka_input_cols = st.columns([1.5] + [1]*4)
     with col_name:
         st.markdown("KA 值")
     for i, room in enumerate(room_labels):
-        with ka_cols[i]:
-            results[f"{key_prefix}_ka_{room}"] = st.number_input("", key=f"{key_prefix}_ka_{room}", label_visibility="collapsed")
+        with ka_input_cols[i]:
+            results[f"{key_prefix}_ka_{room}"] = st.number_input(
+                "", key=f"{key_prefix}_ka_{room}", label_visibility="collapsed"
+            )
 
-    col_name, *temp_cols = st.columns([1.5] + [1]*4)
+    # 第三行：特征温度
+    col_name, *temp_input_cols = st.columns([1.5] + [1]*4)
     with col_name:
         st.markdown("特征温度 (°C)")
     for i, room in enumerate(room_labels):
-        with temp_cols[i]:
-            results[f"{key_prefix}_temp_{room}"] = st.number_input("", key=f"{key_prefix}_temp_{room}", label_visibility="collapsed")
+        with temp_input_cols[i]:
+            results[f"{key_prefix}_temp_{room}"] = st.number_input(
+                "", key=f"{key_prefix}_temp_{room}", label_visibility="collapsed"
+            )
+
 
 
 with col_base:
