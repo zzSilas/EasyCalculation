@@ -45,6 +45,7 @@ with col1:
 with col2:
     ka = st.number_input("", key="ka", label_visibility="collapsed")
 
+col1, col2 = st.columns([1.5, 2])
 with col1:
     st.markdown("压缩机型号")
 with col2:
@@ -54,6 +55,7 @@ with col2:
         key="compressor_model",
         label_visibility="collapsed"
     )
+
 
 
 # 可选：输入结果展示
