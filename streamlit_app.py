@@ -60,7 +60,7 @@ def appliance_input_area(area_name, key_prefix):
         )
 
     # 箱体 KA 和 特征温度输入（RC, VF, CC, FC）
-    st.markdown("**箱体 KA 与特征温度设置**")
+    st.markdown("<h4 style='text-align: center;'>箱体 KA 与特征温度设置</h4>", unsafe_allow_html=True)
     room_labels = ["RC", "VF", "CC", "FC"]
 
     # 第一行：标签
