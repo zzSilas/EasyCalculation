@@ -34,7 +34,6 @@ def appliance_input_area(area_name, key_prefix):
             results[f"{param}_32"] = st.number_input(
                 "", key=f"{key_prefix}_{param}_32", label_visibility="collapsed")
 
-    st.markdown("#### 单值参数")
 
     single_params = [
         ("待机功耗", f"{key_prefix}_standby", "number"),
