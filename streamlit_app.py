@@ -45,9 +45,9 @@ with col1:
 with col2:
     ka = st.number_input("", key="ka", label_visibility="collapsed")
 
-with col1:
-    st.markdown("压缩机型号")
+
 with col2:
+    st.markdown("压缩机型号")
     compressor = st.selectbox(
     "压缩机型号",
     ["VESH11C", "VESH7C", "VESG9C", "VEMH8C", "VESH9G", "VESH6C", "VESF7C"],
