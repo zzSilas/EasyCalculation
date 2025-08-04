@@ -38,7 +38,7 @@ def appliance_input_area(area_name, key_prefix):
     # 第三行：特征温度
     col_name, *temp_input_cols = st.columns([1.5] + [1]*4)
     with col_name:
-        st.markdown("特征温度 (°C)")
+        st.markdown("特征温度 [°C]")
     for i, room in enumerate(room_labels):
         with temp_input_cols[i]:
             results[f"{key_prefix}_temp_{room}"] = st.number_input(
