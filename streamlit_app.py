@@ -46,4 +46,4 @@ with col2:
         st.write("高压侧温度:", {"16°C": high_temp_16, "32°C": high_temp_32})
         st.write("低压侧温度:", {"16°C": low_temp_16, "32°C": low_temp_32})
         st.write("待机功耗:", standby_power)
-        st.write("E_s_
+        st.write("Es:", {"16°C": Es_16, "32°C": Es_32})
