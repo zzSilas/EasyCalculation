@@ -4,7 +4,7 @@ st.set_page_config(layout="wide")
 st.title("🧊 Refrigerator Calculation 🧊")
 
 params = [
-    "高压侧温度", "低压侧温度",  "E_steady", "化霜增量","Es"
+    "高压侧温度[℃]", "低压侧温度[℃]",  "E_steady[Wh/d]", "化霜增量[Wh/d]","Es[Wh/d]"
 ]
 
 # 三列布局：左栏、中间分割栏（窄），右栏
@@ -38,7 +38,7 @@ def appliance_input_area(area_name, key_prefix):
     # 替代原来的 single_params，改成逐项输入
     col1, col2 = st.columns([1.5, 1])
     with col1:
-        st.markdown("E_aux")
+        st.markdown("E_aux[Wh/d]")
     with col2:
         results[f"{key_prefix}_standby"] = st.number_input("", key=f"{key_prefix}_standby", label_visibility="collapsed")
         
