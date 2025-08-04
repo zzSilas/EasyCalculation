@@ -45,12 +45,11 @@ with col1:
 with col2:
     ka = st.number_input("", key="ka", label_visibility="collapsed")
 
-
 with col1:
     st.markdown("压缩机型号")
 with col2:
     compressor = st.selectbox(
-        "",  # 不显示 label
+        "",  # 空字符串隐藏label
         ["VESH11C", "VESH7C", "VESG9C", "VEMH8C", "VESH9G", "VESH6C", "VESF7C"],
         key="compressor_model",
         label_visibility="collapsed"
