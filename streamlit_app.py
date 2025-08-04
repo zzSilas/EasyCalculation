@@ -106,21 +106,31 @@ with col_new:
 st.divider()
 
 
+import streamlit as st
 
-###main calculation
-# 示例变量
-variable_results = {
-    "Q0 [W]": [120.5],
-    "Qc [W]": [300.7],
-    "Power [W]": [95.3],
-    "COP": [3.15]
-}
+# 自定义按钮CSS，调整大小和居中
+st.markdown(
+    """
+    <style>
+    div.stButton > button {
+        width: 200px;
+        height: 60px;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        background-color: #007ACC;
+        border-radius: 10px;
+        margin: 0 auto;
+        display: block;
+    }
+    div.stButton {
+        text-align: center;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-# 计算按钮
 if st.button("Calculate"):
-    # 创建 DataFrame
-    df_results = pd.DataFrame(variable_results)
-
-    # 显示表格
-    st.table(df_results)
+    st.write("按钮被点击，开始计算！")
 
