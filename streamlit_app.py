@@ -59,7 +59,7 @@ def appliance_input_area(area_name, key_prefix):
     # 根据是否是 new 来过滤参数
     filtered_params = params.copy()
     if key_prefix == "new":
-        filtered_params = [p for p in params if not p.startswith("高压侧") and not p.startswith("低压侧")]
+        filtered_params = [p for p in params if not p.startswith("高压侧") and not p.startswith("低压侧") and not p.E_steady]
 
     for param in filtered_params:
 
