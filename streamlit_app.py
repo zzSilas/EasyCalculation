@@ -48,7 +48,12 @@ with col2:
 with col1:
     st.markdown("压缩机型号")
 with col2:
-    compressor = st.selectbox("", ["型号A", "型号B", "型号C"], label_visibility="collapsed")
+    compressor = st.selectbox(
+    "压缩机型号",
+    ["VESH11C", "VESH7C", "VESG9C", "VEMH8C", "VESH9G", "VESH6C", "VESF7C"],
+    key="compressor_model"
+)
+
 
 # 可选：输入结果展示
 st.divider()
