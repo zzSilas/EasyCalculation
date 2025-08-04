@@ -38,15 +38,10 @@ def appliance_input_area(area_name, key_prefix):
     # 替代原来的 single_params，改成逐项输入
     col1, col2 = st.columns([1.5, 1])
     with col1:
-        st.markdown("待机功耗")
-    with col2:
-        results[f"{key_prefix}_standby"] = st.number_input("", key=f"{key_prefix}_standby", label_visibility="collapsed")
-
-    col1, col2 = st.columns([1.5, 1])
-    with col1:
         st.markdown("E_aux")
     with col2:
-        results[f"{key_prefix}_e_aux"] = st.number_input("", key=f"{key_prefix}_e_aux", label_visibility="collapsed")
+        results[f"{key_prefix}_standby"] = st.number_input("", key=f"{key_prefix}_standby", label_visibility="collapsed")
+        
 
     col1, col2 = st.columns([1.5, 1])
     with col1:
