@@ -11,6 +11,8 @@ params = [
 col_base, col_divider, col_new = st.columns([4, 0.1, 4])
 
 def appliance_input_area(area_name, key_prefix):
+    
+    results = {}
     # 箱体 KA 和 特征温度输入（RC, VF, CC, FC）
     st.markdown("<h4 style='text-align: center;'>箱体 KA 与特征温度设置</h4>", unsafe_allow_html=True)
     room_labels = ["RC", "VF", "CC", "FC"]
@@ -53,7 +55,6 @@ def appliance_input_area(area_name, key_prefix):
     with col_32:
         st.markdown("**32°C**")
 
-    results = {}
 
     # 根据是否是 new 来过滤参数
     filtered_params = params.copy()
