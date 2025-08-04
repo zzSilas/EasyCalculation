@@ -106,4 +106,21 @@ with col_new:
 st.divider()
 
 if st.button("Calculate"):
-    print("OK")
+    # 假设有几个变量你想要打印
+    Q0 = 123.4
+    Qc = 567.8
+    COP = Q0 / Qc
+
+    st.markdown("### 🔍 计算结果")
+    st.write("Q0:", Q0)
+    st.write("Qc:", Qc)
+    st.write("COP:", round(COP, 2))  # 保留两位小数
+
+    # 也可以用 st.json 或 st.code 显示结构化内容
+    results = {
+        "Q0 (蒸发负荷)": Q0,
+        "Qc (冷凝负荷)": Qc,
+        "COP (性能系数)": COP
+    }
+    st.json(results)
+
