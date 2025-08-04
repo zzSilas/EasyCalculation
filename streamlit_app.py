@@ -105,22 +105,22 @@ with col_new:
 
 st.divider()
 
+
+
+###main calculation
+# 示例变量
+variable_results = {
+    "Q0 [W]": [120.5],
+    "Qc [W]": [300.7],
+    "Power [W]": [95.3],
+    "COP": [3.15]
+}
+
+# 计算按钮
 if st.button("Calculate"):
-    # 假设有几个变量你想要打印
-    Q0 = 123.4
-    Qc = 567.8
-    COP = Q0 / Qc
+    # 创建 DataFrame
+    df_results = pd.DataFrame(variable_results)
 
-    st.markdown("### 🔍 计算结果")
-    st.write("Q0:", Q0)
-    st.write("Qc:", Qc)
-    st.write("COP:", round(COP, 2))  # 保留两位小数
-
-    # 也可以用 st.json 或 st.code 显示结构化内容
-    results = {
-        "Q0 (蒸发负荷)": Q0,
-        "Qc (冷凝负荷)": Qc,
-        "COP (性能系数)": COP
-    }
-    st.json(results)
+    # 显示表格
+    st.table(df_results)
 
