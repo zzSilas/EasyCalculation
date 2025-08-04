@@ -131,6 +131,17 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+import streamlit as st
+import pandas as pd
+
+# ... 省略你的前面代码，保证 new_results 已经定义并存了数据
+
 if st.button("Calculate"):
-    st.write("按钮被点击，开始计算！")
+    st.write("计算完成，New Appliance 输入如下：")
+
+    # new_results 是一个字典，我们转换成一行的 DataFrame 显示
+    df_new = pd.DataFrame([new_results])
+
+    st.table(df_new)
+
 
