@@ -7,13 +7,12 @@ params = [
     "高压侧温度", "低压侧温度", "E_steady", "化霜增量", "Es"
 ]
 
-# 横向两列：左边base，右边new
-col_base, col_new = st.columns(2)
+# 三列布局：左栏、中间分割栏（窄），右栏
+col_base, col_divider, col_new = st.columns([4, 0.1, 4])
 
 def appliance_input_area(area_name, key_prefix):
     st.markdown(f"### {area_name}")
 
-    # 参数名和两个温度列标题
     col_name, col_16, col_32 = st.columns([1.5, 1, 1])
     with col_name:
         st.markdown("**参数名称**")
@@ -24,7 +23,6 @@ def appliance_input_area(area_name, key_prefix):
 
     results = {}
 
-    # 参数输入
     for param in params:
         col_name, col_16, col_32 = st.columns([1.5, 1, 1])
         with col_name:
@@ -38,7 +36,6 @@ def appliance_input_area(area_name, key_prefix):
 
     st.markdown("#### 单值参数")
 
-    # 单值参数输入
     single_params = [
         ("待机功耗", f"{key_prefix}_standby", "number"),
         ("E_aux", f"{key_prefix}_e_aux", "number"),
@@ -65,6 +62,9 @@ def appliance_input_area(area_name, key_prefix):
 
 with col_base:
     base_results = appliance_input_area("Base Appliance", "base")
+
+with col_divider:
+    st.markdown("<div style='border-left:2px solid #aaa; height: 100%; margin: 0 10px;'></div>", unsafe_allow_html=True)
 
 with col_new:
     new_results = appliance_input_area("New Appliance", "new")
